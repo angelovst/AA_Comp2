@@ -1,6 +1,8 @@
 package zoo;
 
 public interface Animal {
+    boolean Alimentar(Alimento alimento);
+
     void locomover();
 
     Sexo getSexo();
