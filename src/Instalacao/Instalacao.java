@@ -25,7 +25,13 @@ public abstract class Instalacao {
         return localizacao;
     }
 
-    public void setLocalizacao(Localizacao localizacao) {
-        this.localizacao = localizacao;
+    public boolean adicionarAnimais(Animal animal){
+        if(animaisInstalados.size() < capacidadeMaxima){
+            animaisInstalados.add(animal);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

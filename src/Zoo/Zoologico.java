@@ -1,5 +1,6 @@
 package Zoo;
 
+import Animais.Interfaces.Animal;
 import Enums.Localizacao;
 import Instalacao.Instalacao;
 
@@ -19,4 +20,5 @@ public class Zoologico {
         instalacoes.put(instalacao.getLocalizacao(), instalacao);
         return true;
     }
+
 }
