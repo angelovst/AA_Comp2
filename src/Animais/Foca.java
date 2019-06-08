@@ -21,7 +21,8 @@ public class Foca implements Anfibio {
 
     @Override
     public void locomover() {
-
+        nadar();
+        andar();
     }
 
     @Override

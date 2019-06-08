@@ -21,7 +21,7 @@ public class Zebra implements Terrestre {
 
     @Override
     public void locomover() {
-
+        andar();
     }
 
     @Override

@@ -21,7 +21,8 @@ public class Tartaruga implements Anfibio {
 
     @Override
     public void locomover() {
-
+        nadar();
+        andar();
     }
 
     @Override

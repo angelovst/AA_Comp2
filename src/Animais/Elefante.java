@@ -21,7 +21,7 @@ public class Elefante implements Terrestre {
 
     @Override
     public void locomover() {
-
+        andar();
     }
 
     @Override

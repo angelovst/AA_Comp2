@@ -21,7 +21,7 @@ public class Tubarao implements Aquatico {
 
     @Override
     public void locomover() {
-
+        nadar();
     }
 
     @Override
@@ -42,5 +42,10 @@ public class Tubarao implements Aquatico {
     @Override
     public void setPorte(Porte porte) {
         this.porte = porte;
+    }
+
+    @Override
+    public void nadar() {
+        System.out.println("Estou nadando!");
     }
 }

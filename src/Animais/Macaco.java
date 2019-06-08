@@ -21,7 +21,7 @@ public class Macaco implements Terrestre {
 
     @Override
     public void locomover() {
-
+        andar();
     }
 
     @Override

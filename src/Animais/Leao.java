@@ -21,7 +21,7 @@ public class Leao implements Terrestre {
 
     @Override
     public void locomover() {
-
+        andar();
     }
 
     @Override

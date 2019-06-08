@@ -21,7 +21,7 @@ public class Baleia implements Aquatico {
 
     @Override
     public void locomover() {
-
+        nadar();
     }
 
     @Override

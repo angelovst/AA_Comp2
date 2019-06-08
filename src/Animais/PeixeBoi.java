@@ -21,7 +21,7 @@ public class PeixeBoi implements Aquatico {
 
     @Override
     public void locomover() {
-
+        nadar();
     }
 
     @Override
@@ -43,4 +43,5 @@ public class PeixeBoi implements Aquatico {
     public void setPorte(Porte porte) {
         this.porte = porte;
     }
+
 }
