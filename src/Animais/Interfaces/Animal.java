@@ -1,4 +1,9 @@
-package zoo;
+package Animais.Interfaces;
+
+import Enums.Alimento;
+import Enums.Sexo;
+import Enums.Porte;
+
 
 public interface Animal {
     boolean Alimentar(Alimento alimento);

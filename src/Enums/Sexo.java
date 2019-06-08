@@ -1,4 +1,4 @@
-package zoo;
+package Enums;
 
 public enum Sexo {
     MASCULINO, FEMININO
