@@ -21,17 +21,34 @@ public abstract class Instalacao {
         this.elementosInstalacao = elementosInstalacao;
     }
 
-    public Localizacao getLocalizacao() {
-        return localizacao;
-    }
-
     public boolean adicionarAnimais(Animal animal){
-        if(animaisInstalados.size() < capacidadeMaxima){
+        if(animaisInstalados.size() < capacidadeMaxima &&
+                animal.getClass().getSimpleName().equals(this.getClass().getSimpleName().replace("Instalacao", ""))){
             animaisInstalados.add(animal);
             return true;
         }
         else{
             return false;
         }
+    }
+
+    public Localizacao getLocalizacao() {
+        return localizacao;
+    }
+
+    public double getTemperatura() {
+        return temperatura;
+    }
+
+    public int getCapacidadeMaxima() {
+        return capacidadeMaxima;
+    }
+
+    public List<ElementoInstalacao> getElementosInstalacao() {
+        return elementosInstalacao;
+    }
+
+    public List<Animal> getAnimaisInstalados() {
+        return animaisInstalados;
     }
 }
