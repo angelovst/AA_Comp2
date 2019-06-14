@@ -21,4 +21,11 @@ public class Zoologico {
         return true;
     }
 
+    public Instalacao getInstalacao(Localizacao localizacao){
+        if(instalacoes.containsKey(localizacao)){
+            return instalacoes.get(localizacao);
+        }
+        return null;
+    }
+
 }

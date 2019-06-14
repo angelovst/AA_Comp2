@@ -21,15 +21,16 @@ public abstract class Instalacao {
         this.elementosInstalacao = elementosInstalacao;
     }
 
-    public boolean adicionarAnimais(Animal animal){
+    public void adicionarAnimais(Animal animal){
         if(animaisInstalados.size() < capacidadeMaxima &&
                 animal.getClass().getSimpleName().equals(this.getClass().getSimpleName().replace("Instalacao", ""))){
             animaisInstalados.add(animal);
-            return true;
+            System.out.println(animal.getClass().getSimpleName() + " inserido com sucesso em " + this.getClass().getSimpleName());
         }
         else{
-            return false;
+            System.out.println(animal.getClass().getSimpleName() + " não pode ser inserido em " + this.getClass().getSimpleName());
         }
+        System.out.println();
     }
 
     public Localizacao getLocalizacao() {

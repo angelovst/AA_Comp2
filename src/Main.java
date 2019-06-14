@@ -1,13 +1,12 @@
-import Animais.*;
 import Animais.Interfaces.Animal;
 import Enums.Alimento;
 import Enums.Localizacao;
 import Enums.Sexo;
 import Instalacao.Animais.FabricaInstalacao;
-import Instalacao.Instalacao;
 import Instalacao.ElementoInstalacao;
+import Instalacao.Instalacao;
 import Zoo.Zoologico;
-
+import Animais.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -38,23 +37,34 @@ public class Main {
 
         return animais;
     }
+
+    public static void printaAnimais(Animal animal){
+        String acao;
+        System.out.println(animal.getClass().getSimpleName());
+        System.out.println("Sexo: " + animal.getSexo());
+        System.out.println("Porte: " + animal.getPorte());
+
+        for(Alimento alimento : Alimento.values()){
+            if (animal.Alimentar(alimento)) {
+                acao = " comeu ";
+            }
+            else{
+                acao = " não come ";
+            }
+            System.out.println(animal.getClass().getSimpleName() + acao + alimento);
+        }
+        System.out.println(animal.getClass().getSimpleName() + " diz:");
+        animal.locomover();
+        System.out.println();
+    }
+
+
     public static void TestaAnimais(){
         ArrayList<Animal> animais = criaAnimais();
-        String acao;
+
 
         for(Animal animal : animais){
-            for(Alimento alimento : Alimento.values()){
-                if (animal.Alimentar(alimento)) {
-                    acao = " comeu ";
-                }
-                else{
-                    acao = " não come ";
-                }
-                System.out.println(animal.getClass().getSimpleName() + acao + alimento);
-            }
-            System.out.println(animal.getClass().getSimpleName() + " diz:");
-            animal.locomover();
-            System.out.println();
+            printaAnimais(animal);
         }
     }
 
@@ -84,6 +94,10 @@ public class Main {
         for(ElementoInstalacao elemento: instalacao.getElementosInstalacao()) {
             System.out.println(elemento.getClass().getSimpleName());
         }
+        System.out.println("Animais:");
+        for(Animal animal : instalacao.getAnimaisInstalados()){
+            printaAnimais(animal);
+        }
     }
 
     public static ArrayList<Instalacao> TestaInstalacoes()
@@ -95,52 +109,34 @@ public class Main {
         for(Instalacao instalacao : instalacoes) {
             printaInstalacao(instalacao);
             for(Animal animal : animais){
-                if(instalacao.adicionarAnimais(animal)){
-                    System.out.println(animal.getClass().getSimpleName() + " inserido com sucesso");
-                }
-                else{
-                    System.out.println(animal.getClass().getSimpleName() + " não pode ser inserido em " + instalacao.getClass().getSimpleName());
-                }
+                instalacao.adicionarAnimais(animal);
             }
             System.out.println();
         }
         return instalacoes;
     }
 
+
     public static void main(String[] args)
-    {/*
-        Elefante elef = new Elefante(Sexo.FEMININO);
-        Baleia bal = new Baleia(Sexo.FEMININO);
-
-
-        for (Alimento comida : Alimento.values()) {
-            String comeu;
-            if(elef.Alimentar(comida)){
-                comeu = " comeu ";
-            }
-            else{
-                comeu = " não come ";
-            }
-            System.out.println(elef.getClass().getSimpleName() + comeu + comida);
-        }
-
-        boolean foi = zoo.adicionarInstalacao(FabricaInstalacao.criaInstalacaoElefante(Localizacao.CENTROESTE));
-        System.out.println(foi);
-        foi = zoo.adicionarInstalacao(FabricaInstalacao.criaInstalacaoElefante(Localizacao.CENTROESTE));
-        System.out.println(foi);
-
-        Instalacao ints = FabricaInstalacao.criaInstalacaoElefante(Localizacao.CENTROESTE);
-
-        if(ints.adicionarAnimais(elef)){
-            System.out.println(elef.getClass().getSimpleName() + "add");
-        }
-        if(ints.adicionarAnimais(bal)){
-            System.out.println(bal.getClass().getSimpleName() + "add");
-        }
-        */
+    {
         TestaAnimais();
-        TestaInstalacoes();
+        ArrayList<Instalacao> instalacoes = TestaInstalacoes();
         Zoologico zoo = new Zoologico();
 
+        for(Instalacao instalacao : instalacoes){
+            if(zoo.adicionarInstalacao(instalacao)){
+                System.out.println(instalacao.getClass().getSimpleName() + " adicionada com sucesso");
+            }
+            else{
+                System.out.println(instalacao.getClass().getSimpleName() + " nao pode ser adicionada");
+            }
+            printaInstalacao(instalacao);
+            System.out.println();
+        }
+
+        printaInstalacao(zoo.getInstalacao(Localizacao.SULDOESTE));
+        zoo.getInstalacao(Localizacao.SULDOESTE).adicionarAnimais(new Tubarao(Sexo.FEMININO));
+        zoo.getInstalacao(Localizacao.SULDOESTE).adicionarAnimais(new Tubarao(Sexo.MASCULINO));
+        printaInstalacao(zoo.getInstalacao(Localizacao.SULDOESTE));
     }
 }
